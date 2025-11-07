@@ -1,1 +1,162 @@
+#include <iostream>
+#include <windows.h>
+using namespace std;
+
+struct visitorR {
+    string name; 
+    string email; 
+    string phoneNumber; 
+    string dateOfVisit; 
+    string timeIn; 
+    string timeOut; 
+};
+
+struct admin {
+    string username;
+    string password;
+};
+
+int main() {
+    system("Color E9");
+    int choice, choice1, choice2, choice3, sChoice;
+    visitorR visitor;
+    admin admin;
+    
+    do {
+    cout << "\n----SCHOOL VISIT LOG-----" << endl;
+    cout << "|      1. Visitor       |" << endl;
+    cout << "|      2. Admin         |" << endl;
+    cout << "|      3. Exit          |" << endl;
+    cout << "-------------------------" << endl;
+    cout << "    Enter: ";
+    cin >> choice;
+    ///system("Color 0C");
+    switch(choice) {
+    case 1:
+    do {
+        cout << "\n----------VISITOR'S LOG----------" << endl;
+        cout << "|       4. Create Record        |" << endl;
+        cout << "|       5. Return               |" << endl;
+        cout << "---------------------------------" << endl;
+        cout << "    Enter: ";
+        cin >> choice1;
+        
+        switch (choice1){
+            case 4:
+            //system("Color 0D");
+            cout << "\n--------------------------ADD RECORD---------------------------" << endl;
+            cout << "|| Name || Email || Phone Number || Date of Visit || Time In ||" << endl;
+             cout << "---------------------------------------------------------------" << endl;
+             
+            cout << "\n        Enter Full Name: ";
+            cin >> visitor.name;
+            cout << "        Enter Personal Email: ";
+            cin >> visitor.email;
+            cout << "        Enter Phone Number: ";
+            cin >> visitor.phoneNumber;
+            cout << "        Enter Date of Visit (MM/DD/YY): ";
+            cin >> visitor.dateOfVisit;
+            cout << "        Enter Time In: ";
+            cin >> visitor.timeIn;
+            cout << "        Added Time In Successfully." << endl;
+            
+            case 5:
+            cout <<"\n        ...Returning...\n";
+        }
+    } while (choice1!=5);
+    break;
+            
+    case 2: 
+    char y, n;
+    
+    do {
+        cout << "\n------ADMIN LOG IN-------";
+        cout << "\nEnter Admin Username: ";
+        cin >> admin.username;
+        cout << "Enter Password: ";
+        cin >> admin.password;
+        
+        if ((admin.username == "admin") && (admin.password == "admin123")) {
+            cout << "Admin Log In Successfully" << endl;
+            break;
+    }
+        else {
+            cout << "Invalid Username and Password";
+        }
+    }
+    while ((admin.username != "admin") && (admin.password != "admin123"));
+             
+    do {
+        cout << "\n-----------ADMIN'S LOG-----------" << endl;
+        cout << "|         6. Search by Name       |" << endl;
+        cout << "|         7. Search by Date       |" << endl;
+        cout << "|         8. Return               |" << endl;
+        cout << "---------------------------------" << endl;
+        cout << "    Enter: ";
+        cin >> choice2;
+    
+    switch (choice2){
+        case 6:
+            cout << "\nSearch Visitor Name: ";
+            cin >> sChoice;    
+            if (visitor.name.empty()) {
+                cout << "Record not found\n";
+            }        
+            else {
+                cout << "Visitor's Name: "<< visitor.name << endl;
+                cout << "Visitor's Personal Email: "<< visitor.email << endl;
+                cout << "Visitor's Phone Number: "<< visitor.phoneNumber << endl;
+                cout << "Visitor's Date of Visit: "<< visitor.dateOfVisit << endl;
+                cout << "Visitor's Time In: "<< visitor.timeIn << endl;
+    
+
+                cout << "\nDelete visitor Record?\nY/N: ";
+                cin >> choice3;
+                if (choice3 == y) {
+                    //delete
+                    cout << "Record Deleted Successfully." << endl;
+                }
+                else if (choice3 == n) {
+                    cout << "No Record Deleted." << endl;
+                }
+            }
+        
+        case 7:
+             cout << "Search by Date: ";
+            cin >> sChoice;    
+            if (visitor.dateOfVisit.empty()) {
+                cout << "Record not found";
+            }
+            else {
+            cout << visitor.dateOfVisit << ": Name’s of Visitor:\n" << visitor.name; //(for statement)
+                cout << "Select a Visitor: ";
+                cin >> (visitor.name);         //many values    
+                cout << "Delete visitor Record?\nY/N: ";
+                cin >> choice3;
+                if (choice3 == y) {
+                    //delete
+                    cout << "Record Deleted Successfully." << endl;
+                }
+                else if (choice3 == n) {
+                    cout << "No Record Deleted." << endl;
+                }        
+            }
+                     
+        case 8:
+            cout <<"\n        ...Returning...\n";
+        }
+        } while (choice2!= 8);
+        break;
+            
+    case 3: cout<<"\nExiting Program...";
+            return 0;
+    
+    default: cout<<"    Invalid Input."<<endl;
+             break;
+    } 
+} while (choice!= 3);
+    
+return 0;
+}
+
 
